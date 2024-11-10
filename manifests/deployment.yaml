@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sovannlyna-ui-mastervv-deployment
+  labels:
+    app: sovannlyna-ui-mastervv
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sovannlyna-ui-mastervv
+  template:
+    metadata:
+      labels:
+        app: sovannlyna-ui-mastervv
+    spec:
+      containers:
+        - name: sovannlyna-ui-mastervv-container
+          image: pipejet/sovannlyna-ui-mastervv:0
+          ports:
+            - containerPort: 3000
