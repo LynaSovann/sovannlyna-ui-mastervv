@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sovannlyna-ui-mastervv-https-ingress
+  namespace: sovannlyna-ui-mastervv
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - sovannlyna-ui-mastervv.assessify.org
+      secretName: sovannlyna-ui-mastervv-secret-tls
+  rules:
+    - host: sovannlyna-ui-mastervv.assessify.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sovannlyna-ui-mastervv-service
+                port:
+                  number: 8134
