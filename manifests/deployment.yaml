@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: sovannlyna-ui-mastervv-container
-          image: pipejet/sovannlyna-ui-mastervv:9
+          image: pipejet/sovannlyna-ui-mastervv:13
           ports:
             - containerPort: 3000
